@@ -27,9 +27,24 @@ class MapViewController: UIViewController {
             let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(city.latitude, city.longitude)
             addAnnotation(coordinate, city.cityName)
 
+            // The below line should have a region big enough to fit all cities, but I did not have time to do that. I would have to calculate the center of all cities and make the region big enough to reach all of them. Or I could use min(max(...)) that we used in class.
+            // All this line does is make the region around the last city.
             let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 750, longitudinalMeters: 750)
             mvMap.region = region
         }
+        tapGesture()
+    }
+    
+    func tapGesture() {
+        // I did not have time to test this feature. Below code is what I think the tap gesture should kind of look like. Code is commented out to prevent possible crash.
+        // mvMap.addGestureRecognizer(UITapGestureRecognizer(target: mvMap, action: Selector("tap:")))
+    }
+    
+    @objc func tap(_ gesture: UITapGestureRecognizer) {
+        // Not sure exactly what goes here.
+        // let location = gesture.location(in: mvMap)
+        // let coordinate = mvMap.convert(location, toCoordinateFrom: mvMap)
+        // addAnnotation(coordinate, "New City")
     }
     
     func setMapType() {
